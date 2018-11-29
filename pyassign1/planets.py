@@ -6,18 +6,15 @@ __email__  = "1800011832@pku.edu.cn"
 """
 
 import turtle
-wn=turtle.Screen()
-turtle.screensize(800,600)
+wn = turtle.Screen()
+turtle.screensize(800, 600)
 wn.delay(0)
 
-sun=turtle.Turtle()
-sun.color("orange")
-sun.dot(7)
-sun.hideturtle()
 
-def initialization(t,r,a,c,colors):#t standing for planets,r standing for radius,a standing for major semiaxis,c standing for excentricity
+def initialization(t, r, a, c, colors):
+    # t standing for planets,r standing for radius,a standing for major semi-axis,c standing for semi focal distance
     t.shape("circle")
-    t.shapesize(r,r,r)
+    t.shapesize(r, r, r)
     t.color(colors)
     t.pencolor(colors)
     t.penup()
@@ -25,32 +22,39 @@ def initialization(t,r,a,c,colors):#t standing for planets,r standing for radius
     t.setx(a+c)
     t.pd()
 
-def orbits(t,a,c,i,x):
+
+def orbits(t, a, c, i, x):  # i is used in the while loop
     t.speed(0)
     import math
-    t.goto(a*(math.cos((math.pi)*(i+1)/x))+c,math.sqrt(a**2-c**2)*math.sin((math.pi)*(i+1)/x))
+    t.goto(a*(math.cos(math.pi*(i+1)/x))+c, (math.sqrt(a**2-c**2))*math.sin(math.pi*(i+1)/x))
+
+
 def main():
-    Mercury=turtle.Turtle()
-    Venus=turtle.Turtle()
-    Earth=turtle.Turtle()
-    Mars=turtle.Turtle()
-    Jupiter=turtle.Turtle()
-    Saturn=turtle.Turtle()
-
-    initialization(Mercury,0.1,8.7,4.2,"blue")
-    initialization(Venus,0.2,16.2,0.26,"green")
-    initialization(Earth,0.21,22.5,0.875,"brown")
-    initialization(Mars,0.15,34.2,7.455,"red")
-    initialization(Jupiter,0.358,116,13.3,"sea green")
-    initialization(Saturn,0.303,200,28,"yellow")
-
+    sun = turtle.Turtle()
+    sun.color("orange")
+    sun.dot(7)
+    sun.hideturtle()
+    mercury = turtle.Turtle()
+    venus = turtle.Turtle()
+    earth = turtle.Turtle()
+    mars = turtle.Turtle()
+    jupiter = turtle.Turtle()
+    saturn = turtle.Turtle()
+    initialization(mercury, 0.1, 8.7, 4.2, "blue")
+    initialization(venus, 0.2, 16.2, 0.26, "green")
+    initialization(earth, 0.21, 22.5, 0.875, "brown")
+    initialization(mars, 0.15, 34.2, 7.455, "red")
+    initialization(jupiter, 0.358, 116, 13.3, "sea green")
+    initialization(saturn, 0.303, 200, 28, "yellow")
     while True:
-        for i in range(960):
-            orbits(Mercury,8.7,4.2,i,60)
-            orbits(Venus,16.2,0.26,i,96)
-            orbits(Earth,22.5,0.875,i,120)
-            orbits(Mars,34.2,7.455,i,160)
-            orbits(Jupiter,116,13.3,i,240)
-            orbits(Saturn,200,28,i,480)
-if _name_=="_main_":
+        for y in range(960):
+            orbits(mercury, 8.7, 4.2, y, 60)
+            orbits(venus, 16.2, 0.26, y, 96)
+            orbits(earth, 22.5, 0.875, y, 120)
+            orbits(mars, 34.2, 7.455, y, 160)
+            orbits(jupiter, 116, 13.3, y, 240)
+            orbits(saturn, 200, 28, y, 480)
+
+
+if __name__ == "__main__":
     main()
